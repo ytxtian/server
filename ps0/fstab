@@ -1,0 +1,11 @@
+UUID=d8061d56-b626-11e8-b99a-9cb6540cabf0 / ext4 defaults 0 0
+/swap.img	none	swap	sw	0	0
+
+# snapraid data drives
+UUID=c9ebde46-4953-42d7-9803-00284f195ae2 /depot/data1 ext4 defaults 0 2
+UUID=ad3049b4-f65f-42e8-b9a1-ddd1bd6f00f3 /depot/data2 ext4 defaults 0 2
+UUID=96337aa1-1de4-47fc-ac6f-1cb09965e4de /depot/data3 ext4 defaults 0 2
+
+# snapraid parity drive
+UUID=1b56e4e0-23c2-4ae3-b6ce-17e955f5fd3c /depot/parity ext4 defaults 0 2
+

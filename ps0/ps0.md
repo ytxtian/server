@@ -32,7 +32,38 @@ Ubuntu 18.04 uses netplan as default tool to configure network. See [configure n
   ifconfig -a
   ```
   
-### Install Docker ###
+### Install SMB server ###
+
+* Install Samba
+  ```sh
+  sudo apt-get update
+  sudo apt-get install samba
+  ```
+* Add users to Samba
+  ```sh
+  sudo adduser --no-create-home --disabled-login share
+  sudo addgroup sambashare
+  sudo usermod -a -G sambashare share
+  sudo smbpasswd -a share
+  ```
+* Set up folders
+  ```sh
+  sudo mkdir -p /depot/data2/samba/public
+  sudo chown -R nobody:nogroup /depot/data2/samba/public
+  sudo chmod -R 775 /depot/data2/samba/public
+  sudo mkdir -p /depot/data2/samba/secured
+  sudo chown -R root:sambashare /depot/data2/samba/secured
+  sudo chmod -R 770 /depot/data2/samba/secured
+  ```
+* Configure Samba server
+  ```sh
+  sudo cp  /etc/samba/smb.conf /etc/samba/smb.conf.bak
+  sudo vim /etc/samba/smb.conf
+  ```
+* Restart the service
+  ```sh
+  sudo service smbd restart
+  ```
 
 ### Install and Configurate SnapRAID ###
 
@@ -91,4 +122,6 @@ There is no dpkg that one can use to install directly. Following instruction fro
   ```
   We are done!
   
+### Install Docker ###
+
 ## Dockers containers ##
